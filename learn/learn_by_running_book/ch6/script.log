@@ -1,0 +1,115 @@
+//QEMU and ARM32 linux kernel
+//A
+// Install essential tool
+sudo apt-get install qemu libncurses5-dev gcc-arm-linux-gnueabi build
+-essential
+
+// Download linux kernel 4.0
+wget https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.gz
+tar -zxvf linux-4.0.tar.gz
+
+// Download busybox 1.24.0
+wget https://busybox.net/downloads/busybox-1.24.0.tar.bz2
+tar -xvf busybox-1.24.0.tar.bz2 
+
+//B.
+//Use busybox to build a minimum file system.
+cd busybox
+export ARCH=arm
+export CROSS_COMPILE=arm-linux-gnueabi-
+make menuconfig
+
+//Inside the bluewindow
+Busybox Settings--->
+	Build Options--->
+		[*] Build BusyBox as a static binary (no shared libs)
+//After finish, leave the bluewindow and save the config. Then,
+
+make install
+
+//copy _install into linux-4.0/
+cp -r _install/ ../linux-4.0/
+cd ../linux-4.0/
+cd _install/
+mkdir etc
+mkdir dev
+mkdir mnt
+mkdir -p etc/init.d/
+
+//Create a rcS file and write some content inside
+cd ./etc/init.d/
+echo "mkdir -p /proc
+mkdir -p /tmp
+mkdir -p /sys
+mkdir -p /mnt
+/bin/mount -a
+mkdir -p /dev/pts
+mount -t devpts devpts /dev/pts
+echo /sbin/mdev > /proc/sys/kernel/hotplug
+mdev -s" > rcS
+
+//Change mod for rcS
+chmod +x rcS
+
+// Create fstab file inside ../etc
+cd ..
+echo "proc /proc proc defaults 0 0
+tmpsfs /tmp tmpfs defaults 0 0
+sysfs /sys sysfs defaults 0 0
+tmpfs /dev tmpfs defaults 0 0
+debugfs /sys/kernel/debug debugfs defaults 0 0" > fstab
+
+//Create inittab file inside _install/etc
+echo "::sysinit:/etc/init.d/rcS
+::respawn:-/bin/sh
+::askfirst:-/bin/sh
+::ctrlaltdel:/bin/umount -a -r" > inittab
+
+//Create a device node under _install/dev. Why do we need sudo here?
+//Could we do it without sudo?
+cd ../dev
+sudo mknod console c 5 1
+sudo mknod null c 1 3
+
+
+//C.
+// Compile the kernel
+cd ../../
+export ARCH=arm
+export CROSS_COMPILE=arm-linux-gnueabi-
+make vexpress_defconfig
+make menuconfig
+
+//Set build configuration
+//Add option and add _install inside
+General setup --->
+	[*] Initial RAM filesystem and RAM disk (initramfs/initrd) support(_install) Initramfs source file(s)
+
+//Remove default kernel command string
+Boot options -->
+	() Default kernel command string
+
+//memory split 3G/1G user/kernel split
+//Add high memory support
+Kernel Features --->
+Memory split(3G/1G user/kernel split)--->
+[*] High memory support
+
+//Start to compile kernel
+make bzImage -j4 ARCH=arm CROSS_COMPILE=arm-linux-gnueabi-
+make dtbs
+
+//Run
+qemu-system-arm -M vexpress-a9 -smp 4 -m 1024M -kernel arch/arm/boot/zImage -append "rdinit=/linuxrc console=ttyAMA0 loglevel=8" -dtb arch/arm/boot/dts/vexpress-v2p-ca9.dtb -nographic
+
+
+
+
+// How to kill this qemu process?
+// Use "killall qemu-system-arm" in another sudo ssh session.
+
+
+
+
+
+

@@ -1,0 +1,173 @@
+pulseaudio: set_sink_input_volume() failed
+pulseaudio: Reason: Invalid argument
+pulseaudio: set_sink_input_mute() failed
+pulseaudio: Reason: Invalid argument
+Booting Linux on physical CPU 0x0
+Initializing cgroup subsys cpuset
+Linux version 4.0.0 (newslab@newslab-System-Product-Name) (gcc version 5.4.0 20160609 (Ubuntu/Linaro 5.4.0-6ubuntu1~16.04.4) ) #3 SMP Mon Jan 15 21:33:19 CST 2018
+CPU: ARMv7 Processor [410fc090] revision 0 (ARMv7), cr=10c5387d
+CPU: PIPT / VIPT nonaliasing data cache, VIPT nonaliasing instruction cache
+Machine model: V2P-CA9
+Memory policy: Data cache writealloc
+On node 0 totalpages: 262144
+free_area_init_node: node 0, pgdat c0782480, node_mem_map eeffa000
+  Normal zone: 1520 pages used for memmap
+  Normal zone: 0 pages reserved
+  Normal zone: 194560 pages, LIFO batch:31
+  HighMem zone: 67584 pages, LIFO batch:15
+PERCPU: Embedded 10 pages/cpu @eefc1000 s11660 r8192 d21108 u40960
+pcpu-alloc: s11660 r8192 d21108 u40960 alloc=10*4096
+pcpu-alloc: [0] 0 [0] 1 [0] 2 [0] 3 
+Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 260624
+Kernel command line: rdinit=/linuxrc console=ttyAMA0 loglevel=8
+log_buf_len individual max cpu contribution: 4096 bytes
+log_buf_len total cpu_extra contributions: 12288 bytes
+log_buf_len min size: 16384 bytes
+log_buf_len: 32768 bytes
+early log buf free: 14908(90%)
+PID hash table entries: 4096 (order: 2, 16384 bytes)
+Dentry cache hash table entries: 131072 (order: 7, 524288 bytes)
+Inode-cache hash table entries: 65536 (order: 6, 262144 bytes)
+Memory: 1031428K/1048576K available (4787K kernel code, 156K rwdata, 1364K rodata, 1348K init, 166K bss, 17148K reserved, 0K cma-reserved, 270336K highmem)
+Virtual kernel memory layout:
+    vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+    fixmap  : 0xffc00000 - 0xfff00000   (3072 kB)
+    vmalloc : 0xf0000000 - 0xff000000   ( 240 MB)
+    lowmem  : 0xc0000000 - 0xef800000   ( 760 MB)
+    pkmap   : 0xbfe00000 - 0xc0000000   (   2 MB)
+    modules : 0xbf000000 - 0xbfe00000   (  14 MB)
+      .text : 0xc0008000 - 0xc060a09c   (6153 kB)
+      .init : 0xc060b000 - 0xc075c000   (1348 kB)
+      .data : 0xc075c000 - 0xc07833c0   ( 157 kB)
+       .bss : 0xc07833c0 - 0xc07acbf0   ( 167 kB)
+SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=4, Nodes=1
+Hierarchical RCU implementation.
+	Additional per-CPU info printed with stalls.
+	RCU restricting CPUs from NR_CPUS=8 to nr_cpu_ids=4.
+RCU: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=4
+NR_IRQS:16 nr_irqs:16 16
+L2C: platform modifies aux control register: 0x02020000 -> 0x02420000
+L2C: device tree omits to specify unified cache
+L2C: DT/platform modifies aux control register: 0x02020000 -> 0x02420000
+L2C-310 enabling early BRESP for Cortex-A9
+L2C-310 full line of zeros enabled for Cortex-A9
+L2C-310 dynamic clock gating disabled, standby mode disabled
+L2C-310 cache controller enabled, 8 ways, 128 kB
+L2C-310: CACHE_ID 0x410000c8, AUX_CTRL 0x46420001
+smp_twd: clock not found -2
+sched_clock: 32 bits at 24MHz, resolution 41ns, wraps every 178956969942ns
+Console: colour dummy device 80x30
+Calibrating local timer... 96.81MHz.
+Calibrating delay loop... 950.27 BogoMIPS (lpj=4751360)
+pid_max: default: 32768 minimum: 301
+Mount-cache hash table entries: 2048 (order: 1, 8192 bytes)
+Mountpoint-cache hash table entries: 2048 (order: 1, 8192 bytes)
+CPU: Testing write buffer coherency: ok
+CPU0: thread -1, cpu 0, socket 0, mpidr 80000000
+Setting up static identity map for 0x60491708 - 0x60491760
+CPU1: thread -1, cpu 1, socket 0, mpidr 80000001
+CPU2: thread -1, cpu 2, socket 0, mpidr 80000002
+CPU3: thread -1, cpu 3, socket 0, mpidr 80000003
+Brought up 4 CPUs
+SMP: Total of 4 processors activated (1963.41 BogoMIPS).
+CPU: All CPU(s) started in SVC mode.
+devtmpfs: initialized
+VFP support v0.3: implementor 41 architecture 3 part 30 variant 9 rev 0
+NET: Registered protocol family 16
+DMA: preallocated 256 KiB pool for atomic coherent allocations
+cpuidle: using governor ladder
+cpuidle: using governor menu
+of_amba_device_create(): amba_device_add() failed (-19) for /memory-controller@100e0000
+of_amba_device_create(): amba_device_add() failed (-19) for /memory-controller@100e1000
+of_amba_device_create(): amba_device_add() failed (-19) for /watchdog@100e5000
+of_amba_device_create(): amba_device_add() failed (-19) for /smb/motherboard/iofpga@7,00000000/sysctl@01000
+of_amba_device_create(): amba_device_add() failed (-19) for /smb/motherboard/iofpga@7,00000000/wdt@0f000
+hw-breakpoint: debug architecture 0x4 unsupported.
+Serial: AMBA PL011 UART driver
+10009000.uart: ttyAMA0 at MMIO 0x10009000 (irq = 38, base_baud = 0) is a PL011 rev1
+console [ttyAMA0] enabled
+1000a000.uart: ttyAMA1 at MMIO 0x1000a000 (irq = 39, base_baud = 0) is a PL011 rev1
+1000b000.uart: ttyAMA2 at MMIO 0x1000b000 (irq = 40, base_baud = 0) is a PL011 rev1
+1000c000.uart: ttyAMA3 at MMIO 0x1000c000 (irq = 41, base_baud = 0) is a PL011 rev1
+SCSI subsystem initialized
+libata version 3.00 loaded.
+usbcore: registered new interface driver usbfs
+usbcore: registered new interface driver hub
+usbcore: registered new device driver usb
+Advanced Linux Sound Architecture Driver Initialized.
+Switched to clocksource arm,sp804
+NET: Registered protocol family 2
+TCP established hash table entries: 8192 (order: 3, 32768 bytes)
+TCP bind hash table entries: 8192 (order: 4, 65536 bytes)
+TCP: Hash tables configured (established 8192 bind 8192)
+TCP: reno registered
+UDP hash table entries: 512 (order: 2, 16384 bytes)
+UDP-Lite hash table entries: 512 (order: 2, 16384 bytes)
+NET: Registered protocol family 1
+RPC: Registered named UNIX socket transport module.
+RPC: Registered udp transport module.
+RPC: Registered tcp transport module.
+RPC: Registered tcp NFSv4.1 backchannel transport module.
+hw perfevents: enabled with armv7_cortex_a9 PMU driver, 1 counters available
+futex hash table entries: 1024 (order: 4, 65536 bytes)
+squashfs: version 4.0 (2009/01/31) Phillip Lougher
+jffs2: version 2.2. (NAND) © 2001-2006 Red Hat, Inc.
+9p: Installing v9fs 9p2000 file system support
+bounce: pool size: 64 pages
+io scheduler noop registered (default)
+clcd-pl11x 10020000.clcd: PL111 rev2 at 0x10020000
+clcd-pl11x 10020000.clcd: /clcd@10020000 hardware, 1024x768@59 display
+Console: switching to colour frame buffer device 128x48
+clcd-pl11x 1001f000.clcd: PL111 rev2 at 0x1001f000
+clcd-pl11x 1001f000.clcd: /smb/motherboard/iofpga@7,00000000/clcd@1f000 hardware, 640x480@59 display
+40000000.flash: Found 2 x16 devices at 0x0 in 32-bit bank. Manufacturer ID 0x000000 Chip ID 0x000000
+Intel/Sharp Extended Query Table at 0x0031
+Using buffer write method
+erase region 0: offset=0x0,size=0x80000,blocks=128
+40000000.flash: Found 2 x16 devices at 0x0 in 32-bit bank. Manufacturer ID 0x000000 Chip ID 0x000000
+Intel/Sharp Extended Query Table at 0x0031
+Using buffer write method
+erase region 0: offset=0x0,size=0x80000,blocks=128
+Concatenating MTD devices:
+(0): "40000000.flash"
+(1): "40000000.flash"
+into device "40000000.flash"
+libphy: smsc911x-mdio: probed
+smsc911x 4e000000.ethernet eth0: attached PHY driver [Generic PHY] (mii_bus:phy_addr=4e000000.etherne:01, irq=-1)
+smsc911x 4e000000.ethernet eth0: MAC Address: 52:54:00:12:34:56
+isp1760 4f000000.usb: bus width: 32, oc: digital
+isp1760 4f000000.usb: NXP ISP1760 USB Host Controller
+isp1760 4f000000.usb: new USB bus registered, assigned bus number 1
+isp1760 4f000000.usb: Scratch test failed.
+isp1760 4f000000.usb: can't setup: -19
+isp1760 4f000000.usb: USB bus 1 deregistered
+usbcore: registered new interface driver usb-storage
+mousedev: PS/2 mouse device common for all mice
+rtc-pl031 10017000.rtc: rtc core: registered pl031 as rtc0
+Driver 'mmcblk' needs updating - please use bus_type methods
+mmci-pl18x 10005000.mmci: Got CD GPIO
+mmci-pl18x 10005000.mmci: Got WP GPIO
+mmci-pl18x 10005000.mmci: No vqmmc regulator found
+mmci-pl18x 10005000.mmci: mmc0: PL181 manf 41 rev0 at 0x10005000 irq 34,35 (pio)
+ledtrig-cpu: registered to indicate activity on CPUs
+usbcore: registered new interface driver usbhid
+usbhid: USB HID core driver
+aaci-pl041 10004000.aaci: ARM AC'97 Interface PL041 rev0 at 0x10004000, irq 33
+aaci-pl041 10004000.aaci: FIFO 512 entries
+oprofile: using arm/armv7-ca9
+TCP: cubic registered
+NET: Registered protocol family 17
+9pnet: Installing 9P2000 support
+Registering SWP/SWPB emulation handler
+rtc-pl031 10017000.rtc: setting system clock to 2018-01-15 13:33:40 UTC (1516023220)
+ALSA device list:
+  #0: ARM AC'97 Interface PL041 rev0 at 0x10004000, irq 33
+Freeing unused kernel memory: 1348K (c060b000 - c075c000)
+input: AT Raw Set 2 keyboard as /devices/platform/smb/smb:motherboard/smb:motherboard:iofpga@7,00000000/10006000.kmi/serio0/input/input0
+
+Please press Enter to activate this console. input: ImExPS/2 Generic Explorer Mouse as /devices/platform/smb/smb:motherboard/smb:motherboard:iofpga@7,00000000/10007000.kmi/serio1/input/input2
+
+/ # 
+/ # ls
+bin      etc      mnt      sbin     tmp
+dev      linuxrc  proc     sys      usr

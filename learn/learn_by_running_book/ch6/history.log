@@ -1,0 +1,14 @@
+export ARCH=arm
+export CROSS_COMPILE=arm-linux-gnueabi-
+make vexpress_defconfig
+make menuconfig
+make make bzImage -j4 ARCH=arm CROSS_COMPILE=arm-linux-gnueabi-
+make bzImage -j4 ARCH=arm CROSS_COMPILE=arm-linux-gnueabi-
+make dtbs
+qemu-system-arm -M vexpress-a9 -smp 4 -m 1024M -kernel arch/arm/boot/zImage -append "rdinit=/linuxrc console=ttyAMA0 loglevel=8" -dtb arch/arm/boot/dts/vexpress-v2p-ca9.dtb -nographic
+
+//The history before is missing. Maybe I got some type error before.
+//Always use history to record what I typed should be better...
+
+//Maybe I need to type again....
+//Just post a issue now...
