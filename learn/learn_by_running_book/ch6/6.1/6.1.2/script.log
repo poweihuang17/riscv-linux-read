@@ -1,0 +1,28 @@
+// Install ARM gdb
+sudo apt-get install gdb-arm-none-eabi
+
+//Build again with debug information
+make menuconfig
+
+Kernel hacking --->
+Compile-time checks and compiler options --->
+	[*] Compile the kernel with debug info
+
+//Build kernel
+make 
+
+//Run kernel
+qemu-system-arm -nographic -M vexpress-a9 -smp 4 -m 1024M -kernel arch/arm/boot/zImage -append "rdinit=/linuxrc console=ttyAMA0 loglevel=8" -dtb arch/arm/boot/dts/vexpress-v2p-ca9.dtb -S -s
+
+//-S: It means QEMU will stop CPU, until remote GDB send control command.
+//-s: use port 1234 to get command from GDB. 
+
+
+//In another terminal
+cd linux-4.0
+arm-none-eabi-gdb --tui vmlinux
+
+//Inside gdb
+(gdb) target remote localhost:1234
+(gdb) b start_kernel
+(gdb) c
